@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
-  selector: 'app-dashboard-Layout',
-  templateUrl: './dashboard-Layout.component.html',
-  styleUrls: ['./dashboard-Layout.component.css']
+  templateUrl: './dashboard-layout.component.html',
+  styleUrls: ['./dashboard-layout.component.css']
 })
-export class DashboardLayoutComponent implements OnInit {
+export class DashboardLayoutComponent {
 
-  constructor() { }
+  private authService = inject( AuthService );
 
-  ngOnInit() {
-  }
+  public user = computed(() => this.authService.currentUser() );
+
+  // get user() {
+  //   return this.authService.currentUser();
+  // }
+
 
 }
