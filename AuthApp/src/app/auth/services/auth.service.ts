@@ -4,7 +4,7 @@ import { Injectable, computed, inject, signal } from '@angular/core';
 import { Observable, catchError, map, of, tap, throwError } from 'rxjs';
 
 import { environment } from 'src/environments/environmnets';
-import { CheckTokenResponse, LoginResponse, User } from '../interfaces';
+import { CheckTokenResponse, LoginResponse } from '../interfaces';
 import { AuthStatus } from '../interfaces/auth-status.enum';
 
 @Injectable({
@@ -22,7 +22,10 @@ public currentUser= computed(()=>this._currentUser())
 public authStatus= computed(()=>this._authStatus())
 
 
-constructor() {}
+constructor() {
+this.checkAuthStatus().subscribe();
+
+}
 private setAuthentication(user:User,token:string ): boolean{
   this._currentUser.set(user);
   this._authStatus.set(AuthStatus.authenticated);
