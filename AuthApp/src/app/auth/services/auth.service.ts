@@ -3,6 +3,8 @@ import { Injectable, inject, signal } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
 import { environment } from 'src/environments/environmnets';
+import { User } from '../interfaces';
+import { AuthStatus } from '../interfaces/auth-status.enum';
 
 @Injectable({
   providedIn: 'root'
