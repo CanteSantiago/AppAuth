@@ -37,9 +37,11 @@ localStorage.setItem('token', token);
 console.log(user, token);
 
       }),
-      map(()=>true)
+      map(()=>true),
 
-      )
+      //TODO: Erores
+     catchError(err => throwError(()=> err.error.message))
+      );
 }
 
 }
